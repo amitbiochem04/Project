@@ -12,4 +12,4 @@ featureCounts -a /Users/amitsingh/Desktop/genome/neurosopra/Neurospora_crassa.NC
 featureCounts -Q 10 -M -s 0 -T 1 -a Homo_sapiens.GRCh38.76.gtf -o test.bam.featureCount.cnt test.bam
 featureCounts -Q 10 -M -s 0 -T 8 -a Homo_sapiens.GRCh38.76.gtf -o test.bam.featureCount.cnt test.bam
 
-
+http://staff.um.edu.mt/jebej02/blog/2016/05/23/installing-cufflinks-rnaseq-on-ubuntu/
