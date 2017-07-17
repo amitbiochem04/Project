@@ -104,9 +104,15 @@ bowtie2 -x /home/amit/genome/Mus_musculus/Ensembl/GRCm38/Sequence/Bowtie2Index/g
 ###http://www.biologie.ens.fr/~mthomas/other/chip-seq-training/
 
 ######Simply filter the bam with MAPQ (mapping quality of the reads), 5 or 10 is usually reasonable: convert sam file to bam file 
+samtools view -bS  csp.sam > csp.bam
+samtools sort csp.bam -o csp.sorted.bam
+samtools index csp.sorted.bam
+########
 
 
-samtools view -b -q 10 foo.bam > foo.filtered.bam
+
+
+#samtools view -b -q 10 foo.bam > foo.filtered.bam
 ##or if you only want the number:
 samtools view -c -b -q 10 foo.bam
 
