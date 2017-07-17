@@ -108,13 +108,12 @@ samtools view -bS  csp.sam > csp.bam
 samtools sort csp.bam -o csp.sorted.bam
 samtools index csp.sorted.bam
 ########
-
-
-
-
 #samtools view -b -q 10 foo.bam > foo.filtered.bam
 ##or if you only want the number:
-samtools view -c -b -q 10 foo.bam
+#samtools view -c -b -q 10 foo.bam
+###### PhantomPeakQualTools check
+
+
 
 #####peak call for narrow peaks:
 macs2 callpeak -t IP.bam -c Input.bam -n test -p 0.01 --nomodel --extsize fragment_length --keep-dup all -g hs
