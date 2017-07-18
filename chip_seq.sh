@@ -113,6 +113,9 @@ samtools index csp.sorted.bam
 #samtools view -c -b -q 10 foo.bam
 ###### PhantomPeakQualTools check
 
+samtools view -F 0x0204 -o - csp.bam | awk 'BEGIN{OFS="\t"}{if (and($2,16) > 0) {print $3,($4-1),($4-1+length($10)),"N","1000","-"} else {print $3,($4-1),($4-1+length($10)),"N","1000","+"} }' | gzip -c > csp_experiment.tagAlign.gz
+
+
 
 
 #####peak call for narrow peaks:
