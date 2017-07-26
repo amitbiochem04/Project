@@ -102,13 +102,16 @@ bowtie2 -x /home/amit/genome/Mus_musculus/Ensembl/GRCm38/Sequence/Bowtie2Index/g
 ######peak calling by macs2
 ##http://cbsu.tc.cornell.edu/lab/doc/CHIPseq_workshop_20150504_lecture1.pdf
 ###http://www.biologie.ens.fr/~mthomas/other/chip-seq-training/
-
+ bowtie2 -p 4 -x /Users/amit/Desktop/genome/neurospora_crassa_bowtie_index --phred64 --sensitive-local -U s_6_sequence_GTR__csp.fastq -S  csp.sam
+ samtools view -bS  csp.sam > csp.bam
 ######Simply filter the bam with MAPQ (mapping quality of the reads), 5 or 10 is usually reasonable: convert sam file to bam file 
 
 
 samtools view -b -q 10 foo.bam > foo.filtered.bam
 ##or if you only want the number:
 samtools view -c -b -q 10 foo.bam
+samtools sort csp.bam -o csp.sorted.bam
+samtools index csp.sorted.bam 
 
 #####peak call for narrow peaks:
 macs2 callpeak -t IP.bam -c Input.bam -n test -p 0.01 --nomodel --extsize fragment_length --keep-dup all -g hs
